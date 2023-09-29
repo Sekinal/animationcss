@@ -1,0 +1,90 @@
+@keyframes fade-in {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes strike {
+    0%   { width: 0; }
+    100% { width: 100%; }
+}
+
+@keyframes fade-out {
+    0%   { width: 100%; opacity: 1; }
+    100% { width: 0; opacity: 0; }
+}
+
+
+.strike {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: bottom;
+    transition: width 0.8s;
+}
+
+.strike::after {
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: red;
+    animation-name: strike;
+    animation-duration: 0.4s;
+    animation-delay: 2s;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards; 
+    transition: width 0.4s;
+}
+
+.fade-in {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    transition: opacity 0.8s;
+}
+
+.fade-in:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.fade-out {
+    width: auto;
+    color: black;
+    animation-name: fade-out;
+    animation-duration: 0.8s;
+    animation-delay:3s; /* Delay the fade-out animation by 3 seconds */
+    animation-fill-mode: forwards;
+}
+
+.replacement {
+    display: none;
+    opacity: 0;
+}
+
+.typewriter {
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation:
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+}
+
+/* The typing animation */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+}
